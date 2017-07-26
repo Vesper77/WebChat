@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'message/index'
+
+  get 'message/Index'
+
   devise_for :users
   devise_scope :user do
     # post 'create', to: 'devise/registrations#create',as: 'user_registration'
@@ -6,7 +10,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
   resources :users
   resources :chat
-  # post 'create', to: 'users#create', as: 'users1'
+  post 'message/index' => 'message#index'
+  post 'message/create' => 'message#create'
   # get 'forgot-password', to: 'devise/passwords#new', as: 'forgot_password'
   root 'welcome#index'
 

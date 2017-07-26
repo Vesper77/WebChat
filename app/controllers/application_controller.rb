@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
+  # protect_from_forgery with: :null_session
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+
 
   def configure_permitted_parameters
     added_attrs = [:name, :email, :password, :password_confirmation, :remember_me]
