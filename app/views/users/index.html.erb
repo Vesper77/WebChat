@@ -1,0 +1,22 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+  </tr>
+
+  <% if @users
+        @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= link_to 'Show', user_path(user) %></td>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+
+<%= render 'link' %>
+
+
+<p><%= current_user.name %></p>
+
