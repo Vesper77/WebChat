@@ -17,8 +17,14 @@ chat.controller("SendCtrl", function ($scope, $http) {
             data: {userId: $scope.userId}
         }).then(function mySuccess(response) {
             console.log('success');
-            $scope.stuffs = response.data[0];
-            $scope.userName = response.data[1].username
+            var arr =[];
+            for (var i = 0; i < response.data[0].length; i++) {
+                arr.push([response.data[0][i],response.data[1][i]])
+            }
+            console.log(arr);
+            console.log(arr[0][0].name);
+            $scope.stuffs = arr;
+            $scope.userName = response.data[2].username
         }, function myError() {
             console.log('error')
         });
@@ -33,9 +39,9 @@ chat.controller("SendCtrl", function ($scope, $http) {
             data: {message: $scope.message, userId: $scope.userId}
         }).then(function mySuccess() {
             console.log('success');
-            $scope.p = angular.element("<p class='back-message' />")
-            $scope.p.text($scope.userName +":" +$scope.message);
-            $scope.tempMessage.append($scope.p)
+            $scope.p = angular.element("<p class='back-message'><b>" + $scope.userName + "</b>:" + $scope.message + "</p>");
+            // $scope.p.text( $scope.userName + ":" +$scope.message);
+            $scope.tempMessage.append($scope.p);
             $scope.stuffs.push;
 
         }, function myError() {
