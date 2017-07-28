@@ -45,12 +45,12 @@ class MessageController < ApplicationController
   end
 
   def create
-    @message = Message.new
-
-    @message.author = current_user.id
-    @message.user_id = @message.author
-    @message.receiver = params[:userId]
-    @message.text = params[:message]
+    @message = Message.new({
+                               author: current_user.id,
+                               user_id: current_user.id,
+                               receiver: params[:userId],
+                               text: params[:message]
+                           })
     puts "Author = #{@message.author}"
     puts "Receiver = #{@message.receiver}"
     @message.save
