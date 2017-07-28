@@ -16,4 +16,8 @@
 //= require bootstrap-sprockets
 //= require angular
 //= require controllers/chat_refresh
-//= require_tree .
+//= require turbolinks
+//= require cable
+//= require_tree ./channels
+
+
