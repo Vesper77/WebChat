@@ -41,12 +41,13 @@ class MessageController < ApplicationController
       end
       @array << @msg
     end
-    puts "SSL works"
     json = {:author => @author, :receiver => @receiver, :msgs => @array}
+
     render json: json
   end
 
   def create
+
     @message = Message.new({
                                author: current_user.id,
                                user_id: current_user.id,
@@ -56,12 +57,22 @@ class MessageController < ApplicationController
     puts "Author = #{@message.author}"
     puts "Receiver = #{@message.receiver}"
     @message.save
+
+    if (@message.text[0,5] == "/bot " && Integer(@message.text[5,@message.text.length]))
+      number = @message.text[4,@message.text.length]
+
+      Resque.enqueue(Sleeper,{receiver: @message.author, number: number})
+
+    end
+
     if @message.save
       ActionCable.server.broadcast 'messages',
                                    message: @message.text,
                                    user: current_user.name
       head :ok
     end
+
+
   end
 
 
