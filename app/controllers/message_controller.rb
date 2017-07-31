@@ -2,6 +2,7 @@ class MessageController < ApplicationController
   before_action :authenticate_user!
 
 
+
   # def index
   #   @user = User.find(params[:userId])
   #   puts "Username = #{@user.name}"
@@ -40,6 +41,7 @@ class MessageController < ApplicationController
       end
       @array << @msg
     end
+    puts "SSL works"
     json = {:author => @author, :receiver => @receiver, :msgs => @array}
     render json: json
   end
