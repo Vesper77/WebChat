@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   get 'message/Index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  # devise_for :users
   devise_scope :user do
     # post 'create', to: 'devise/registrations#create',as: 'user_registration'
   end
