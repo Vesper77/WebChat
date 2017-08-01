@@ -2,25 +2,6 @@ class MessageController < ApplicationController
   before_action :authenticate_user!
 
 
-
-  # def index
-  #   @user = User.find(params[:userId])
-  #   puts "Username = #{@user.name}"
-  #   @receiver = @user.id
-  #   join1 = User.joins("FULL JOIN messages ON messages.user_id = users.id").where("(author = '#{current_user.id}' and receiver = '#{@receiver}') or (author = '#{@receiver}' and receiver = '#{current_user.id}')")
-  #   join2 = Message.joins("FULL JOIN users ON messages.user_id = users.id").where("(author = '#{current_user.id}' and receiver = '#{@receiver}') or (author = '#{@receiver}' and receiver = '#{current_user.id}')")
-  #
-  #
-  #   json = []
-  #   json << join1
-  #   json << join2
-  #   json << {username: current_user.name}
-  #   json << {receiver: @receiver}
-  #
-  #
-  #   render json: json
-  # end
-
   def index
     @author = {:id => current_user.id, :name => current_user.name}
     @receiver = {:id => params[:userId], :name => User.find(params[:userId]).name}
@@ -58,10 +39,11 @@ class MessageController < ApplicationController
     puts "Receiver = #{@message.receiver}"
     @message.save
 
-    if (@message.text[0,5] == "/bot " && Integer(@message.text[5,@message.text.length]))
-      number = @message.text[4,@message.text.length]
 
-      Resque.enqueue(Sleeper,{receiver: @message.author, number: number})
+    if item = @message.text.match(/\/bot\s{1}\d+$/)
+
+
+      Resque.enqueue(Sleeper, @message.author, item[0].split[1].to_i)
 
     end
 

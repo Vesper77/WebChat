@@ -1,15 +1,15 @@
-<h1>Listing users</h1>
+<h1><%=t(:listing_users) %></h1>
 
 <table>
   <tr>
-    <th>Username</th>
+    <th><%=t(:username) %></th>
   </tr>
 
   <% if @users
         @users.each do |user| %>
           <tr>
             <td><%= user.name %></td>
-            <td><%= link_to 'Show', user_path(user) %></td>
+            <td><%= link_to t(:show), user_path(user) %></td>
           </tr>
       <% end %>
   <% end %>

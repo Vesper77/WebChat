@@ -1,6 +1,6 @@
 <div class="container">
-  <h1>Starting page</h1>
-  <p><%= link_to 'List', users_path %></p>
-  <p><%= link_to 'Chat', controller: 'chat', action: 'index' %></p>
+  <h1><%= t(:starting_page) %></h1>
+  <p><%= link_to t(:list), users_path %></p>
+  <p><%= link_to t(:chat), controller: 'chat', action: 'index' %></p>
 </div>
 

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   devise_scope :user do
   end
   get 'welcome/index'
+  get '/api' => redirect('/swagger-ui/dist/index.html?url=/api/v1/api-docs.json')
   resources :users
   resources :chat
   post 'message/index' => 'message#index'
