@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # devise_for :users
   require 'resque/server'
 
   mount ActionCable.server => '/cable'
@@ -8,14 +9,14 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
-  devise_scope :user do
-  end
+  # devise_scope :user do
+  # end
   get 'welcome/index'
   get '/api' => redirect('/swagger-ui/dist/index.html?url=/api/v1/api-docs.json')
   resource :users do
-     get 'show', :on => :collection
+  #    get 'show', :on => :collection
      get 'index', :on => :collection
-
+  #
   end
   resources :chat
   post 'message/index' => 'message#index'
