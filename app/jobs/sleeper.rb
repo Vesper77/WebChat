@@ -6,7 +6,7 @@ class Sleeper
       sleep(5)
 
       message = Message.new({
-                              author: 5,
+                              author: 4,
                               receiver: author,
                               text: "Bot triggered!"
                           })
