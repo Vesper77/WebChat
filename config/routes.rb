@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   get 'message/index'
 
-  get 'message/Index'
 
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
@@ -13,7 +12,11 @@ Rails.application.routes.draw do
   end
   get 'welcome/index'
   get '/api' => redirect('/swagger-ui/dist/index.html?url=/api/v1/api-docs.json')
-  resources :users
+  resource :users do
+     get 'show', :on => :collection
+     get 'index', :on => :collection
+
+  end
   resources :chat
   post 'message/index' => 'message#index'
   post 'message/create' => 'message#create'

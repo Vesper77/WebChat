@@ -31,7 +31,6 @@ class MessageController < ApplicationController
 
     @message = Message.new({
                                author: current_user.id,
-                               user_id: current_user.id,
                                receiver: params[:userId],
                                text: params[:message]
                            })

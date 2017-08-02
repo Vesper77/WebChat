@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20170728123848) do
   create_table "messages", force: :cascade do |t|
     t.integer "author"
     t.integer "receiver"
-    t.integer "user_id"
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,5 +45,4 @@ ActiveRecord::Schema.define(version: 20170728123848) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "messages", "users"
 end

@@ -2,7 +2,9 @@
   <%= csrf_meta_tag %>
   <div class="row">
     <div class="col-md-6">
-      <h1>Users</h1>
+      <h1>
+        <%= t(:users) %>
+      </h1>
       <ul>
         <% if @users
              @users.each do |user| %>
@@ -12,10 +14,12 @@
       </ul>
     </div>
     <div class="col-md-6 col-md-pull-4">
-      <h1>Chat</h1>
+      <h1>
+        <%= t(:chat) %>
+      </h1>
       <div ng-repeat="stuff in stuffs">
         <div class="row">
-          <p> <b>{{stuff.author}}</b>:{{stuff.text}} </p>
+          <p><b>{{stuff.author}}</b>:{{stuff.text}} </p>
 
         </div>
 
@@ -25,7 +29,7 @@
       </div>
       <input type="text" ng-model="message">
       <button ng-click="sendMessage()">
-        GO!
+        <%= t(:go) %>
       </button>
     </div>
   </div>
