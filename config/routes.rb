@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resource :users do
   #    get 'show', :on => :collection
      get 'index', :on => :collection
-  #test123
+  #test
   end
   resources :chat
   post 'message/index' => 'message#index'
