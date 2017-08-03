@@ -9,7 +9,7 @@
         @users.each do |user| %>
           <tr>
             <td><%= user.name %></td>
-            <td><%= link_to t(:show), user_path(user) %></td>
+            <td><%= link_to t(:show), controller: 'users', action: 'show', id: user.id %></td>
           </tr>
       <% end %>
   <% end %>

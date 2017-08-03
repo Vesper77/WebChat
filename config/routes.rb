@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # end
   get 'welcome/index'
   get '/api' => redirect('/swagger-ui/dist/index.html?url=/api/v1/api-docs.json')
+
+  resource :users
   resource :users do
   #    get 'show', :on => :collection
      get 'index', :on => :collection
