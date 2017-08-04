@@ -1,24 +1,33 @@
-# README
+# ChatApplication
+1: To download this app you need to execute: <br>
+$ git clone git@github.com:Vesper77/WebChat.git \<directory name>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+2: Config your postgres connection in config/database.yml<br>
+  
+3:  $ bundle install <br>
+$ rake db:setup<br>
+   $ rake db:migrate<br>
+   $ rake db:seed<br>
+   
+4: To activate bot:<br>
+ $bundle exec rake environment resque:work QUEUE=sleep<br>
+ To activate -  input "/bot n", where n - number of messages which you will get from bot
+) To change localization to russian put locale=ru as a query parameter 
 
-Things you may want to cover:
+5: To run the app exec:<br>
+    $rails s<br>
+    It runs connection on 
+    https://localhost:3001<br>
+    Remember to config your SSL certificate in config/config.yml
 
-* Ruby version
+P.S Test users info:
+ Email: Alex@google.com<br>
+ Password: 123456
+ 
+P.S.S To change swagger description:
+1: Make changes in controllers 
+2: $rake swagger:docs
+3: open https://localhost:3001/api and put in input<br>
+ https://localhost:3001/api/v1/<controller_name>.json to see<br>
+ API description on <controller_name> 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

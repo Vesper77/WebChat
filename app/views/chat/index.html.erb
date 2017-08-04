@@ -1,19 +1,36 @@
-<div class="container-fluid" xmlns="http://www.w3.org/1999/html" ng-app="chat">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html" ng-app="chat" ng-controller="SendCtrl">
+  <%= csrf_meta_tag %>
   <div class="row">
-    <div class="col-md-6">
-      <h1>Users</h1>
-      <ul ng-controller="TestCtrl">
+    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+      <h1>
+        <%= t(:users) %>
+      </h1>
+      <ul>
         <% if @users
              @users.each do |user| %>
-                <li ><a user_id=<%= user.id  %> ng-click="doStuff($event)"><%= user.name %></a></li>
+                <li><a user_id=<%= user.id %> ng-click="doStuff($event)"><%= user.name %></a></li>
             <% end %>
         <% end %>
       </ul>
     </div>
     <div class="col-md-6 col-md-pull-4">
-      <h1>Chat</h1>
-      <div class="message-area"></div>
-      <input type="text">
+      <h1>
+        <%= t(:chat) %>
+      </h1>
+      <div ng-repeat="stuff in stuffs">
+        <div class="row">
+          <p><b>{{stuff.author}}</b>:{{stuff.text}} </p>
+
+        </div>
+
+      </div>
+      <div id="message-area" class="row">
+
+      </div>
+      <input type="text" ng-model="message">
+      <button ng-click="sendMessage()">
+        <%= t(:go) %>
+      </button>
     </div>
   </div>
 </div>

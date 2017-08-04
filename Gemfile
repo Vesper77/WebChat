@@ -57,3 +57,18 @@ gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'websocket-rails'
+gem 'omniauth-facebook'
+gem 'thin'
+gem 'resque'
+gem 'swagger-docs'
+gem 'rspec'
+gem "rspec-core"
+gem "rspec-expectations"
+gem "rspec-mocks"
+gem "rspec-support"
+gem "rspec-rails"
+gem 'rails-controller-testing'
+gem "factory_girl", "~> 4.0"
+gem "factory_girl_rails", "~> 4.0"
+

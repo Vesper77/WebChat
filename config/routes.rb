@@ -1,14 +1,33 @@
 Rails.application.routes.draw do
-  devise_for :users
-  devise_scope :user do
-    # post 'create', to: 'devise/registrations#create',as: 'user_registration'
-  end
+  # devise_for :users
+  require 'resque/server'
+
+  mount ActionCable.server => '/cable'
+
+  get 'message/index'
+
+
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+
+  # devise_scope :user do
+  # end
   get 'welcome/index'
-  resources :users
+  get '/api' => redirect('/swagger-ui/dist/index.html?url=/api/v1/api-docs.json')
+
+  resource :users
+  resource :users do
+  #    get 'show', :on => :collection
+     get 'index', :on => :collection
+  #test
+  end
   resources :chat
-  # post 'create', to: 'users#create', as: 'users1'
-  # get 'forgot-password', to: 'devise/passwords#new', as: 'forgot_password'
+  post 'message/index' => 'message#index'
+  post 'message/create' => 'message#create'
+
+  mount Resque::Server.new, at: "/resque"
   root 'welcome#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
 end

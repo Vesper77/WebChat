@@ -31,3 +31,25 @@
 
 en:
   hello: "Hello world"
+  starting_page: "Starting page"
+  list: "List"
+  chat: "Chat"
+  log_in: "Log in"
+  email: "Email"
+  password: "Password"
+  remember_me: "Remember me"
+  sign_up: "Sign up"
+  forgot_password: "Forgot your password?"
+  sign_in_with: "Sign in with"
+  auth_warning: "You need to sign in or sign up before continuing."
+  password_confirm: "Password confirmation"
+  password_warning: "characters minimum"
+  users: "Users"
+  username: "Username"
+  logout: "Logout"
+  listing_users: "Listing users"
+  go: "Go!"
+  show: "Show"
+  name: "Name"
+
+
