@@ -1,7 +1,14 @@
+default: &default
+ APP_ID: 1987012471529562
+ APP_SECRET: cdf805a4a1830905ca3c691a2cd4f9bd
+ HTTPS_KEY: "/home/valentine/.ssh/server.key"
+ HTTPS_CERT: "/home/valentine/.ssh/server.crt"
+
 development:
-  APP_ID: 1987012471529562
-  APP_SECRET: cdf805a4a1830905ca3c691a2cd4f9bd
+   <<: *default
 
 test:
-  APP_ID: 1987012471529562
-  APP_SECRET: cdf805a4a1830905ca3c691a2cd4f9bd
+    <<: *default
+
+production:
+    <<: *default

@@ -18,8 +18,8 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # On development, run ssl server on port 3001
 if ENV.fetch("RAILS_ENV") == 'development'
   ssl_bind '127.0.0.1', '3001', {
-      key: "/home/valentine/.ssh/server.key",
-      cert: "/home/valentine/.ssh/server.crt",
+      key: APP_CONFIG['HTTPS_KEY'],
+      cert: APP_CONFIG['HTTPS_CERT'],
       verify_mode: 'none'
   }
 end
