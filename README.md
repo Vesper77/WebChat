@@ -11,16 +11,23 @@ $ rake db:setup<br>
    
 4: To activate bot:<br>
  $bundle exec rake environment resque:work QUEUE=sleep<br>
- If you will input "/bot n", where n - number of messages which you will get from bot
+ To activate -  input "/bot n", where n - number of messages which you will get from bot
 ) To change localization to russian put locale=ru as a query parameter 
 
-5: To run the app exec:
+5: To run the app exec:<br>
     $rails s<br>
-    It will run two connections:<br>
-    1. http://localhost:3000<br>
-    2. https://localhost:3001<br>
+    It runs connection on 
+    https://localhost:3001<br>
     Remember to config your SSL certificate in config/config.yml
 
 P.S Test users info:
-1) Email: Alex@google.com<br>
-   Password: 123456
+ Email: Alex@google.com<br>
+ Password: 123456
+ 
+P.S.S To change swagger description:
+1: Make changes in controllers 
+2: $rake swagger:docs
+3: open https://localhost:3001/api and put in input<br>
+ https://localhost:3001/api/v1/<controller_name>.json to see<br>
+ API description on <controller_name> 
+
